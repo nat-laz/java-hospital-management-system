@@ -1,0 +1,13 @@
+Meredith Grey;D004;General Surgery
+Miranda Bailey;D005;Pediatrics
+Gregory House;D006;Diagnostic Medicine
+Derek Shepherd;D007;Neurosurgery
+Cristina Yang;D008;Cardiothoracic Surgery
+April Kepner;D009;Trauma Surgery
+Mark Sloan;D010;Plastic Surgery
+Richard Webber;D011;Internal Medicine
+Amelia Shepherd;D012;Neurology
+Preston Burke;D013;Cardiothoracic Surgery
+Henry Walton Jones;D014;Archaeology
+Stephen Strange;D015;Neurosurgery
+Leonard McCoy;D016;Space Medicine
