@@ -49,3 +49,9 @@ Gracefully handle exceptions, offering meaningful error messages to users.
 - **Language:** Java
 - **Paradigm:** Object-Oriented Programming
 - **Interface:** Console-Based
+
+### Project Developer Team
+
+- [Alex Bruch](https://github.com/bruch-alex)
+- [Marc Stiehm](https://github.com/Rikupp17)
+- [Natalie Lazarev](https://github.com/nat-laz)

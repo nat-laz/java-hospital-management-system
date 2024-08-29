@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 public class PatientServices {
     private Hospital hospital;
-    private static final String RED = "\u001B[31m";
-    private static final String RESET = "\u001B[0m";
 
     public PatientServices(Hospital hospital) {
         this.hospital = hospital;
@@ -40,7 +38,7 @@ public class PatientServices {
         Patient patient = new Patient(name, age, gender, contactInfo);
         hospital.addPatient(patient);
 
-        System.out.println("Patient registered successfully with ID: " + RED + patient.getPatientId() + RESET);
+        System.out.println("Patient registered successfully with ID: " + hospital.RED + patient.getPatientId() + hospital.RESET);
 
         return patient.getPatientId();
     }
@@ -50,6 +48,8 @@ public class PatientServices {
             System.out.println("No patient registered yet. Please register a patient first.");
             return;
         }
+
+        hospital.displayAllPatientsWithIds();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Patient ID:");
@@ -69,6 +69,8 @@ public class PatientServices {
             System.out.println("No patient registered yet. Please register a patient first.");
             return;
         }
+
+        hospital.displayAllPatientsWithIds();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Patient ID:");

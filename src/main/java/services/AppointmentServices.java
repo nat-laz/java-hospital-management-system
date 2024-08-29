@@ -21,6 +21,8 @@ public class AppointmentServices {
     public void scheduleAppointment() {
         Scanner scanner = new Scanner(System.in);
 
+        hospital.displayAllPatientsWithIds();
+
         System.out.println("Enter Patient ID:");
         String patientId = scanner.nextLine();
         Patient patient = hospital.findPatientById(patientId);
@@ -58,6 +60,8 @@ public class AppointmentServices {
             return;
         }
 
+        hospital.displayAllPatientsWithIds();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Patient ID:");
         String patientId = scanner.nextLine();
@@ -89,6 +93,8 @@ public class AppointmentServices {
             System.out.println("No appointments available to cancel.");
             return;
         }
+
+        hospital.displayAllPatientsWithIds();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Patient ID:");
