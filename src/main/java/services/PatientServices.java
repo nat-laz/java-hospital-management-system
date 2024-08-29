@@ -42,7 +42,16 @@ public class PatientServices {
         return patient.getPatientId();
     }
 
-    public void viewPatientDetails(String patientId) {
+    public void viewPatientDetails() {
+        if (hospital.getPatients().isEmpty()) {
+            System.out.println("No patient registered yet. Please register a patient first.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Patient ID:");
+        String patientId = scanner.nextLine();
+
         for (Patient patient : hospital.getPatients()) {
             if (patient.getPatientId().equalsIgnoreCase(patientId)) {
                 System.out.println(patient.toString());

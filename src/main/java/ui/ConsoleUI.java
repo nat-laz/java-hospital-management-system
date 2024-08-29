@@ -22,38 +22,30 @@ public class ConsoleUI {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        String lastRegisteredPatientId = null;  // Store the last registered patient ID
 
         while (true) {
-            System.out.println("Hospital Management System");
+            System.out.println();
+            System.out.println("==== Hospital Management System ====");
             System.out.println("1. Register Patient");
             System.out.println("2. Schedule Appointment");
             System.out.println("3. View Patient Details");
             System.out.println("4. View Doctor Details");
-            System.out.println("5. View Appointments");
+            System.out.println("5. View Appointments and Generate Bill");
             System.out.println("6. Exit");
             System.out.println("Choose an option:");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    lastRegisteredPatientId = patientServices.registerPatient();
+                    patientServices.registerPatient();
                     break;
                 case 2:
-                    if (lastRegisteredPatientId != null) {
-                        appointmentServices.scheduleAppointment();
-                    } else {
-                        System.out.println("No patient registered yet. Please register a patient first.");
-                    }
+                    appointmentServices.scheduleAppointment();
                     break;
                 case 3:
-                    if (lastRegisteredPatientId != null) {
-                        patientServices.viewPatientDetails(lastRegisteredPatientId);
-                    } else {
-                        System.out.println("No patient registered yet. Please register a patient first.");
-                    }
+                    patientServices.viewPatientDetails();
                     break;
                 case 4:
                     System.out.println("Enter Doctor ID:");
@@ -61,7 +53,7 @@ public class ConsoleUI {
                     doctorServices.viewDoctorDetails(doctorId);
                     break;
                 case 5:
-                    appointmentServices.viewAppointments();
+                    appointmentServices.viewAppointmentsAndGenerateBill();
                     break;
                 case 6:
                     System.out.println("Exiting system.");

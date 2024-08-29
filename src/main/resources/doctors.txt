@@ -1,13 +1,13 @@
-Meredith Grey;D004;General Surgery
-Miranda Bailey;D005;Pediatrics
-Gregory House;D006;Diagnostic Medicine
-Derek Shepherd;D007;Neurosurgery
-Cristina Yang;D008;Cardiothoracic Surgery
-April Kepner;D009;Trauma Surgery
-Mark Sloan;D010;Plastic Surgery
-Richard Webber;D011;Internal Medicine
-Amelia Shepherd;D012;Neurology
-Preston Burke;D013;Cardiothoracic Surgery
-Henry Walton Jones;D014;Archaeology
-Stephen Strange;D015;Neurosurgery
-Leonard McCoy;D016;Space Medicine
+Meredith Grey;D004;General Surgery;300.00
+Miranda Bailey;D005;Pediatrics;250.00
+Gregory House;D006;Diagnostic Medicine;400.00
+Derek Shepherd;D007;Neurosurgery;350.00
+Cristina Yang;D008;Cardiothoracic Surgery;320.00
+April Kepner;D009;Trauma Surgery;280.00
+Mark Sloan;D010;Plastic Surgery;300.00
+Richard Webber;D011;Internal Medicine;270.00
+Amelia Shepherd;D012;Neurology;330.00
+Preston Burke;D013;Cardiothoracic Surgery;310.00
+Henry Walton Jones;D014;Archaeology;290.00
+Stephen Strange;D015;Neurosurgery;360.00
+Leonard McCoy;D016;Space Medicine;380.00

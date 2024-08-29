@@ -1,11 +1,13 @@
 package services;
 
-import utils.ValidationUtils;
 import models.Appointment;
 import models.Doctor;
 import models.Hospital;
 import models.Patient;
+import utils.ValidationUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppointmentServices {
@@ -32,7 +34,7 @@ public class AppointmentServices {
             return;
         }
 
-        System.out.println("Enter Date (YYYY-MM-DD):");
+        System.out.println("Enter Date (DD-MM-YYYY):");
         String date = scanner.nextLine();
 
         System.out.println("Enter Time (HH:MM):");
@@ -49,11 +51,37 @@ public class AppointmentServices {
         System.out.println("Appointment scheduled successfully.");
     }
 
-    public void viewAppointments() {
-        for (Appointment appointment : hospital.getAppointments()) {
-            System.out.println(appointment.toString());
+    public void viewAppointmentsAndGenerateBill() {
+        if (hospital.getPatients().isEmpty()) {
+            System.out.println("No patient registered yet. Please register a patient first.");
+            return;
         }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Patient ID:");
+        String patientId = scanner.nextLine();
+
+        List<Appointment> patientAppointments = new ArrayList<>();
+        for (Appointment appointment : hospital.getAppointments()) {
+            if (appointment.getPatient().getPatientId().equalsIgnoreCase(patientId)) {
+                patientAppointments.add(appointment);
+            }
+        }
+
+        if (patientAppointments.isEmpty()) {
+            System.out.println("No appointments found for this patient.");
+            return;
+        }
+
+        System.out.println("Appointments for Patient ID: " + patientId);
+        for (Appointment appointment : patientAppointments) {
+            System.out.println(appointment);
+        }
+
+        // Generate the bill for the patient's appointments
+        BillingService.generateBill(patientAppointments);
     }
+
 
     private Patient findPatientById(String patientId) {
         for (Patient patient : hospital.getPatients()) {

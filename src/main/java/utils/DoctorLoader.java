@@ -18,8 +18,12 @@ public class DoctorLoader {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] details = line.split(";");
-                if (details.length == 3) {
-                    doctors.add(new Doctor(details[1], details[0], details[2]));
+                if (details.length == 4) {
+                    String name = details[0];
+                    String doctorId = details[1];
+                    String specialization = details[2];
+                    double fee = Double.parseDouble(details[3]);
+                    doctors.add(new Doctor(doctorId, name, specialization, fee));
                 }
             }
 
