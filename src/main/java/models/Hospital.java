@@ -27,4 +27,13 @@ public class Hospital {
     public void addAppointment(Appointment appointment) {
         appointments.add(appointment);
     }
+
+    public Patient findPatientById(String patientId) {
+        for (Patient patient : patients) {
+            if (patient.getPatientId().equalsIgnoreCase(patientId)) {
+                return patient;
+            }
+        }
+        return null;
+    }
 }

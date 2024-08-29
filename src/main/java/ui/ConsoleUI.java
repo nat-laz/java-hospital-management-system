@@ -29,9 +29,11 @@ public class ConsoleUI {
             System.out.println("1. Register Patient");
             System.out.println("2. Schedule Appointment");
             System.out.println("3. View Patient Details");
-            System.out.println("4. View Doctor Details");
-            System.out.println("5. View Appointments and Generate Bill");
-            System.out.println("6. Exit");
+            System.out.println("4. Update Patient Information");
+            System.out.println("5. View Doctor Details");
+            System.out.println("6. View Appointments and Generate Bill");
+            System.out.println("7. Cancel Appointment");
+            System.out.println("8. Exit");
             System.out.println("Choose an option:");
 
             int choice = scanner.nextInt();
@@ -48,14 +50,20 @@ public class ConsoleUI {
                     patientServices.viewPatientDetails();
                     break;
                 case 4:
+                    patientServices.updatePatientInformation();
+                    break;
+                case 5:
                     System.out.println("Enter Doctor ID:");
                     String doctorId = scanner.nextLine();
                     doctorServices.viewDoctorDetails(doctorId);
                     break;
-                case 5:
+                case 6:
                     appointmentServices.viewAppointmentsAndGenerateBill();
                     break;
-                case 6:
+                case 7:
+                    appointmentServices.cancelAppointment();
+                    break;
+                case 8:
                     System.out.println("Exiting system.");
                     return;
                 default:

@@ -7,6 +7,7 @@ import models.Patient;
 import utils.ValidationUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class AppointmentServices {
 
         System.out.println("Enter Patient ID:");
         String patientId = scanner.nextLine();
-        Patient patient = findPatientById(patientId);
+        Patient patient = hospital.findPatientById(patientId);
         if (patient == null) {
             System.out.println("Patient not found.");
             return;
@@ -83,12 +84,40 @@ public class AppointmentServices {
     }
 
 
-    private Patient findPatientById(String patientId) {
-        for (Patient patient : hospital.getPatients()) {
-            if (patient.getPatientId().equalsIgnoreCase(patientId)) {
-                return patient;
+    public void cancelAppointment() {
+        if (hospital.getAppointments().isEmpty()) {
+            System.out.println("No appointments available to cancel.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Patient ID:");
+        String patientId = scanner.nextLine();
+
+        System.out.println("Enter Appointment Date (DD-MM-YYYY):");
+        String date = scanner.nextLine();
+
+        System.out.println("Enter Appointment Time (HH:MM):");
+        String time = scanner.nextLine();
+
+        Iterator<Appointment> iterator = hospital.getAppointments().iterator();
+        boolean appointmentFound = false;
+
+        while (iterator.hasNext()) {
+            Appointment appointment = iterator.next();
+            if (appointment.getPatient().getPatientId().equalsIgnoreCase(patientId) &&
+                    appointment.getDate().equals(date) &&
+                    appointment.getTime().equals(time)) {
+
+                iterator.remove();
+                appointmentFound = true;
+                System.out.println("Appointment canceled successfully.");
             }
         }
-        return null;
+
+        if (!appointmentFound) {
+            System.out.println("No matching appointment found.");
+        }
     }
+
 }

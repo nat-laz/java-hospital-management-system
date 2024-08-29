@@ -31,6 +31,6 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment [Patient: " + patient.getName() + ", Doctor: " + doctor.getName() + ", Date: " + date + ", Time: " + time + "]";
+        return "Appointment [Patient: " + patient.getName() + ", Doctor: " + doctor.getName() + ", Doctor ID: " + doctor.getDoctorId() + ", Specialization : " + doctor.getSpecialization() + ", Date: " + date + ", Time: " + time + "]";
     }
 }

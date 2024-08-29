@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class PatientServices {
     private Hospital hospital;
+    private static final String RED = "\u001B[31m";
+    private static final String RESET = "\u001B[0m";
 
     public PatientServices(Hospital hospital) {
         this.hospital = hospital;
@@ -15,6 +17,7 @@ public class PatientServices {
 
     public String registerPatient() {
         Scanner scanner = new Scanner(System.in);
+
 
         System.out.println("Enter Patient Name:");
         String name = scanner.nextLine();
@@ -37,7 +40,7 @@ public class PatientServices {
         Patient patient = new Patient(name, age, gender, contactInfo);
         hospital.addPatient(patient);
 
-        System.out.println("Patient registered successfully with ID: " + patient.getPatientId());
+        System.out.println("Patient registered successfully with ID: " + RED + patient.getPatientId() + RESET);
 
         return patient.getPatientId();
     }
@@ -60,4 +63,58 @@ public class PatientServices {
         }
         System.out.println("Patient not found.");
     }
+
+    public void updatePatientInformation() {
+        if (hospital.getPatients().isEmpty()) {
+            System.out.println("No patient registered yet. Please register a patient first.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Patient ID:");
+        String patientId = scanner.nextLine();
+
+        Patient patient = hospital.findPatientById(patientId);
+        if (patient == null) {
+            System.out.println("Patient not found.");
+            return;
+        }
+
+        System.out.println("Updating information for Patient ID: " + patientId);
+        System.out.println("Current Name: " + patient.getName());
+        System.out.println("Enter new name (or press Enter to keep current):");
+        String name = scanner.nextLine();
+        if (!name.isEmpty()) {
+            patient.setName(name);
+        }
+
+        System.out.println("Current Age: " + patient.getAge());
+        System.out.println("Enter new age (or press Enter to keep current):");
+        String ageInput = scanner.nextLine();
+        if (!ageInput.isEmpty()) {
+            int age = Integer.parseInt(ageInput);
+            if (ValidationUtils.isValidAge(age)) {
+                patient.setAge(age);
+            } else {
+                System.out.println("Invalid age entered. Keeping current age.");
+            }
+        }
+
+        System.out.println("Current Gender: " + patient.getGender());
+        System.out.println("Enter new gender (or press Enter to keep current):");
+        String gender = scanner.nextLine();
+        if (!gender.isEmpty()) {
+            patient.setGender(gender);
+        }
+
+        System.out.println("Current Contact Info: " + patient.getContactInfo());
+        System.out.println("Enter new contact info (or press Enter to keep current):");
+        String contactInfo = scanner.nextLine();
+        if (!contactInfo.isEmpty()) {
+            patient.setContactInfo(contactInfo);
+        }
+
+        System.out.println("Patient information updated successfully.");
+    }
+
 }
